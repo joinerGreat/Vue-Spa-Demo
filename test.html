@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">  
+    <input v-model="val" v-on:keypress.enter="addToList">  
+    <ul>  
+        <li v-for="(val,index) in values">  
+            {{val.val}}  
+            <input type="button" value="删除" v-on:click="removeList(index)"/>  
+        </li>  
+    </ul> 
+     <table>  
+        <tr>  
+            <td>a</td>  
+            <td>b=a+1</td>  
+        </tr>  
+        <tr>  
+            <td>{{a}}</td>  
+            <td>{{b}}</td>  
+        </tr>  
+    </table>  
+    <button @click="add">a = a + 1</button>   
+    <div>
+    	<input type="text" v-model="firstName"/>
+    	<input type="text" v-model="lastName"/>
+    	<input type="text" v-model="fullName"/>
+    </div>
+    <hr/>
+    <ul>
+    	<li v-for="(item,index) in items" track-by="$index">
+    		<span>{{item.age}}</span>
+    		<span>{{item.name}}</span>
+    		<button @click="deleteLine(index)">删除</button>
+    	</li>
+    	<button @click="addLine('a')">添加</button>
+    </ul>
+    <hr/>
+    <add-btn btn="newB"></add-btn>
+    <delete-btn></delete-btn>
+</div>  
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script>
+		new Vue({  
+	        el: '#app',  
+	        data: {  
+	        	a: 1,
+	            val: "1",  
+	            values: [],
+	            firstName: 'john',
+	            lastName: 'elim' ,
+	            items: [
+	            	{age:'12',name:'allen'},
+	            	{age:'22',name:'赵四'},
+	            	{age:'32',name:'王五'}
+	            ],
+	            test:{age:'42',name:'老刘'},
+	            input: '1'
+	        },  
+	        methods: {  
+	            addToList: function () {  
+	                var val = parseInt(this.val.trim());  //注意，因为当上面的val是字符串类型的时候，才能用trim()，如果是数字类型，则用this.val  
+	                if (val) {  
+	                    this.values.push({val: val});  
+	                }  
+	                this.val = String(val + 1);  
+	            },  
+	            removeList: function (index) {  
+	            	console.log(index)
+	            	//删除当前行
+	                this.values.splice(index, 1);  
+	            },
+	            add: function () {
+	            	this.a++;
+	            },
+	            deleteLine: function (index) {
+	            	this.items.splice(index,1);
+	            },
+	            addLine: function (event) {
+	            	console.log(event)
+	            	this.items.push(this.test)
+	            }
+	        },
+	        computed: {
+	        	//a数据变化直接调用b函数
+	        	b: function () {
+	        		return this.a + 1;
+	        	},
+	        	fullName: {
+	        		get: function () {
+	        			return this.firstName + ' ' + this.lastName;
+	        		},
+	        		set: function (newName) {
+	        			var names = newName.split(' ');
+	        			this.firstName = names[0];
+	        			this.lastName = names[names.length-1];
+	        		}
+	        	}
+	        },
+	        //注册组件
+	       components: {  
+	            addBtn: {
+	                template: "<button>btn：{{btn}}</button>",  
+	                data: function () {  
+	                    return {btn: "123"};  
+	                }  
+	            },  
+	            deleteBtn: {  
+	                template: "<button>btn：{{btn}}</button>",  
+	                data: function () {  
+	                    return {btn: "456"};  
+	                }  
+	            }  
+	        }  
+	    }) 
+	  
+	</script>
+</body>
+</html>
