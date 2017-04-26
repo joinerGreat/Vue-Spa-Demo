@@ -154,6 +154,26 @@
 			var curve = new BMapLib.CurveLine(point, {strokeColor:"blue", strokeWeight:3, strokeOpacity:0.5});//创建弧线
 			map.addOverlay(curve);//添加到地图上
 			curve.enableEditing();//开启编辑功能
+
+			/************************************************
+			给地图添加右键菜单
+			*************************************************/
+			var menu = new BMap.ContextMenu();
+
+			var txtMenuItem = [
+				{
+					text:'放大',
+					callback:function(){map.zoomIn()}
+				},
+				{
+					text:'缩小',
+					callback:function(){map.zoomOut()}
+				}
+			];
+			for(var i=0; i < txtMenuItem.length; i++){
+				menu.addItem(new BMap.MenuItem(txtMenuItem[i].text,txtMenuItem[i].callback,100));
+			}
+			map.addContextMenu(menu);
 		}
 	}
 </script>
