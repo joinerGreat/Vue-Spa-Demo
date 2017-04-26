@@ -123,6 +123,17 @@
 			    //   alert('after');
 			    // }
 			}));
+			/************************************************
+			添加新图标
+			*************************************************/
+			//定义新图标
+			var myIcon = new BMap.Icon("http://developer.baidu.com/map/jsdemo/img/fox.gif",new BMap.Size(300,157));
+			//创建标注
+			var marker = new BMap.Marker(pointHK,{icon:myIcon});
+			var marker1 = new BMap.Marker(pointGZ,{icon:myIcon});
+			//将标注放大地图上
+			map.addOverlay(marker);
+			map.addOverlay(marker1) 
 		}
 	}
 </script>
