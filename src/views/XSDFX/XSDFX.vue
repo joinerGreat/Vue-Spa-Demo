@@ -66,6 +66,38 @@
 				alert(e.message);
 			});
 			map.addControl(geolocationControl);
+			//添加自定义控件类，放大ZoomControl
+			function ZoomControl() {
+				//默认停靠位置和偏移量
+				this.defaultAnchor = BMAP_ANCHOR_BOTTOM_RIGHT;
+				this.defaultOffset = new BMap.Size(50,23);
+			}
+			//通过JavaScript的prototype属性继承于BMap.Control
+			ZoomControl.prototype = new BMap.Control();
+			//自定义控件必须实现自己的initialize方法，并且将控件的DOM元素返回
+			//在本方法中创建div容器，并将其添加到地图容器中
+			ZoomControl.prototype.initialize = function(map) {
+				//创建一个DOM元素
+				var div = document.createElement('div');
+				//添加文字说明
+				div.appendChild(document.createTextNode('放大两级'));
+				//添加样式
+				div.style.color = '#40C5CC'; 
+				div.style.cursor = 'pointer';
+				div.style.border = '3px solid gray';
+				div.style.backgroundColor = '#eee';
+				//绑定事件，点击触发
+				div.onclick = function(e) {
+					map.setZoom(map.getZoom() + 2);
+				}
+				//添加DOM元素到地图上
+				map.getContainer().appendChild(div);
+				//将DOM元素返回
+				return div;
+			}
+			//创建控件
+			var myZoomCtrl = new ZoomControl();
+			map.addControl(myZoomCtrl)
 		}
 	}
 </script>
