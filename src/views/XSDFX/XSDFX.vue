@@ -1,63 +1,30 @@
 <template>
-	<div id="XSDFXPage" class="XSDFXPage">
-		<p>hello XSDFXPage</p>
-		<table>
-			<tr v-for="(item,index) in items" @click="addCheck(index,$event)">
-				<td>
-					<input type="checkbox" :value="item.id" :checked="item.id"/><span>{{item.id}}</span>
-				</td>
-			</tr>
-		</table>
-	</div>
+	<div id="XSDFXPage" class="XSDFXPage"></div>
 </template>
 <script>
 	export default {
 		name:'',
 		data () {
 			return {
-				items:[
-					{"id":"12-00","isChecked":"false"},
-					{"id":"12-01","isChecked":"false"},
-					{"id":"12-02","isChecked":"false"},
-					{"id":"12-03","isChecked":"false"},
-					{"id":"12-04","isChecked":"false"},
-					{"id":"12-05","isChecked":"false"},
-				],
-				value:'',
-				checked:'',
-				isChecked:''
+				
 			}
 		},
-		methods:{
-			addCheck($event,index){
-				console.log(index)
-				if(this.isChecked == false){
-					this.isChecked = true					
-				}else{
-					this.isChecked = false
-				}
-
-			}
+		mounted() {
+			// 百度地图API功能
+			var map = new BMap.Map("XSDFXPage");    // 创建Map实例
+			map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+			map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+			map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+			map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 		}
 	}
-	
 </script>
 <style scoped>
-	table{
-		width:500px;
-		margin: 0 auto;
-	}
-	tr{
-		height: 30px;
-		line-height: 30px;
-		border: 1px solid #000;
-		cursor: pointer;
-		background-color: #eee;
-	}
-	td{
-		width: 100%;
-	}
-	input{
-
-	}
+	html,body,.XSDFXPage{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			margin: 0;
+			font-family: "微软雅黑";
+		}
 </style>

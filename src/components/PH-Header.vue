@@ -23,7 +23,7 @@
 				<router-link to="/KSHFX">可视化深度分析</router-link>
 			</li>
 			<li class="layui-nav-item link-page-title">
-				<router-link to="/ZASD">统计分析</router-link>
+				<router-link to="/TJFX">统计分析</router-link>
 			</li>
 			<li class="layui-nav-item link-page-title">
 				<router-link to="/YJ">预警</router-link>
