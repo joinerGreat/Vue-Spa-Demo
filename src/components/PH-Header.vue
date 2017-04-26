@@ -14,7 +14,7 @@
 				<router-link to="/AJGL">案件管理</router-link>
 			</li>
 			<li class="layui-nav-item link-page-title">
-				<router-link to="/XSDFX">相似度分析页面</router-link>
+				<router-link to="/XSDFX">百度地图</router-link>
 			</li>
 			<li class="layui-nav-item link-page-title">
 				<router-link to="/GXFX">关系分析</router-link>

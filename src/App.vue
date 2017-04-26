@@ -31,9 +31,9 @@ export default {
   },
   methods:{
     changeState:function(data){
-      console.log(data)
+      //console.log(data)
       if(data[0] === false){
-        console.log('执行')
+        //console.log('执行')
         this.webShow = true;//显示web应用内容
         this.loginShow = false;//隐藏login组件
         this.headerUserName = data[1];//赋值headerUserName

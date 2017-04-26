@@ -50,12 +50,12 @@ import Axios from 'axios'
 				_this.$emit('showState', [this.loginShow,this.formName.user])
 				var user = this.formName.user,
 					password = this.formName.password;
-					console.log(user,password)
+					//console.log(user,password)
 				Axios.get('../../src/php/login1.php',{
 						user: user,
 						password: password
 					}).then(function(res){
-					 	console.log(res)
+					 	//console.log(res)
 					 	if (res.data == 'cunzai') {
 					 		//与父组件通信传值
 							_this.$emit('showState', [this.loginShow,this.formName.user])
