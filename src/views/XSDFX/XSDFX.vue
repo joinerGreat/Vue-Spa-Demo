@@ -28,18 +28,24 @@
 			setTimeout(function(){
 				map.setZoom(14);
 			},4000);
-			//添加折线
+			/************************************************
+			添加折线
+			*************************************************/
 			var pointGZ = new BMap.Point(113.262232,23.154345);
 			var pointHK = new BMap.Point(110.35,20.02);
 			setTimeout(function(){
 				var polyline = new BMap.Polyline([pointGZ,pointHK],{strokeColor:"blue",strokeWeight:5,strokeOpacity:0.5});
 				map.addOverlay(polyline);
 			},6000);
-			//添加工具条、比例尺控件
+			/************************************************
+			添加工具条、比例尺控件
+			*************************************************/
 			map.addControl(new BMap.ScaleControl({anchor:BMAP_ANCHOR_TOP_LEFT}));
 			map.addControl(new BMap.NavigationControl());
 			map.addControl(new BMap.NavigationControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,type:BMAP_NAVIGATION_CONTROL_SMALL}));
-			//添加定位相关控件
+			/************************************************
+			添加定位相关控件
+			*************************************************/
 			var navigationControl = new BMap.NavigationControl({
 				//靠左上角
 				anchor:BMAP_ANCHOR_TOP_LEFT,
@@ -66,7 +72,10 @@
 				alert(e.message);
 			});
 			map.addControl(geolocationControl);
-			//添加自定义控件类，放大ZoomControl
+			
+			/************************************************
+			添加自定义控件类，放大ZoomControl
+			*************************************************/
 			function ZoomControl() {
 				//默认停靠位置和偏移量
 				this.defaultAnchor = BMAP_ANCHOR_BOTTOM_RIGHT;
@@ -98,6 +107,22 @@
 			//创建控件
 			var myZoomCtrl = new ZoomControl();
 			map.addControl(myZoomCtrl)
+
+			/************************************************
+			添加添加城市列表控件
+			*************************************************/
+			map.addControl(new BMap.CityListControl({
+				anchor:BMAP_ANCHOR_BOTTOM_RIGHT,
+				offset:new BMap.Size(130,23)
+				// 切换城市之间事件
+			    // onChangeBefore: function(){
+			    //    alert('before');
+			    // },
+			    // 切换城市之后事件
+			    // onChangeAfter:function(){
+			    //   alert('after');
+			    // }
+			}));
 		}
 	}
 </script>
