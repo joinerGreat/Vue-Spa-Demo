@@ -133,7 +133,27 @@
 			var marker1 = new BMap.Marker(pointGZ,{icon:myIcon});
 			//将标注放大地图上
 			map.addOverlay(marker);
-			map.addOverlay(marker1) 
+			map.addOverlay(marker1);
+			//文字提示
+			var label = new BMap.Label('广州西站',{offset:new BMap.Size(140,10)});
+			marker1.setLabel(label); 
+			//添加新图标的监听事件
+			marker1.addEventListener('click',function(){
+				var p = marker1.getPosition();//获取位置
+				alert("点击的位置是：" + p.lng + ',' + p.lat);
+			})
+
+			/************************************************
+			添加曲线
+			*************************************************/
+			var beijingPosition=new BMap.Point(116.432045,39.910683),
+				hangzhouPosition=new BMap.Point(120.129721,30.314429),
+				taiwanPosition=new BMap.Point(121.491121,25.127053);
+			var point = [beijingPosition,hangzhouPosition,taiwanPosition];
+
+			var curve = new BMapLib.CurveLine(point, {strokeColor:"blue", strokeWeight:3, strokeOpacity:0.5});//创建弧线
+			map.addOverlay(curve);//添加到地图上
+			curve.enableEditing();//开启编辑功能
 		}
 	}
 </script>

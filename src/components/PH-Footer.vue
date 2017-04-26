@@ -1,6 +1,6 @@
 <template>
 	<div class="ph-footer" id="ph-footer">
-		<span>平湖人案智能系统</span>
+		<span>人案智能系统</span>
 	</div>
 </template>
 <script>
