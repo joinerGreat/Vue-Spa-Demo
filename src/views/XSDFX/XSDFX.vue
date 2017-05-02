@@ -221,6 +221,28 @@
 			var stCtrl = new BMap.PanoramaControl(0);//构建全景控件
 			stCtrl.setOffset(new BMap.Size(20,70));
 			map.addControl(stCtrl);
+
+			//添加驾车起点和终点
+			/*var transit = new BMap.DrivingRoute(map,{
+				renderOptions:{
+					map:map,
+					panel:"r-result",
+					enableDragging:true//可进行拖拽
+				}
+			});
+			transit.search('西单','魏公村');*/
+
+			//添加根据ip地址进行定位
+			setTimeout(function(){
+				function myPosition(result){
+						var cityName = result.name;
+						map.setCenter(cityName);
+						alert('当前定位城市：'+cityName);
+					}
+				var myCity = new BMap.LocalCity();
+				myCity.get(myPosition)
+			},18000);
+			
 		}
 	}
 </script>
