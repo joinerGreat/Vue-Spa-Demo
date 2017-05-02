@@ -215,6 +215,12 @@
 					run();
 				},1500)
 			},8000);
+
+			//添加全景控件展示
+			map.addTileLayer(new BMap.PanoramaCoverageLayer());
+			var stCtrl = new BMap.PanoramaControl(0);//构建全景控件
+			stCtrl.setOffset(new BMap.Size(20,70));
+			map.addControl(stCtrl);
 		}
 	}
 </script>
