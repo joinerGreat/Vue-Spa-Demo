@@ -51,7 +51,7 @@ import Axios from 'axios'
 				var user = this.formName.user,
 					password = this.formName.password;
 					//console.log(user,password)
-				Axios.get('../../src/php/login1.php',{
+				Axios.get('../../src/php/login.php',{
 						user: user,
 						password: password
 					}).then(function(res){
