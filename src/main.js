@@ -4,15 +4,15 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import router from './router/router.js' 
 import $ from 'jquery'
-import Vuex from 'vuex'
+import store from "./store/store.js"//引入store对象
 
 Vue.use(ElementUI)
-Vue.use(Vuex)
 
 Vue.config.productionTip = false
 Vue.config.devtools = true
 new Vue({
   el: '#app',
+  store,//注入到根实例中
   router,
   render: h => h(App)
 })
