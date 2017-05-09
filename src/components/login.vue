@@ -1,7 +1,7 @@
 <template>
 <div class="dialog">
 	<div class="loginPage">
-		<h1>登录{{fromParent}}</h1>
+		<h1><!-- 登录{{fromParent}} --></h1>
 		<el-form>
 			<el-form-item label="user">
 				<el-input type="text" id="user" v-model="formName.user" @blur="inputBlur('user',formName.user)"></el-input>
