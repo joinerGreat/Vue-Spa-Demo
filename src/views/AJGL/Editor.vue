@@ -1,7 +1,7 @@
 <template>
 	<div id="note-editor">
 		<textarea
-		 	:value="activeNoteText"
+		 	v-model="activeNoteText"
 			@input="editNote"	
 			class="form-control">
 		</textarea>
