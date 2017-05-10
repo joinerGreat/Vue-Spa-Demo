@@ -10,9 +10,14 @@ const store = new Vuex.Store({
 		activeNote: {}
 	},
 	mutations:{
+		//给count赋值
+		COUNTINFO(state,value) {
+			state.count = value;
+		},
 		//格式：类型(名字)+处理函数
 		//加1
 		INCREMENT(state) {
+			//console.log(state)//state对象
 			state.count++;
 		},
 		//减1
@@ -29,6 +34,7 @@ const store = new Vuex.Store({
 		},
 
 		EDIT_NOTE(state, text) {
+			console.log(text)
 			state.activeNote.text = text
 		},
 
@@ -46,6 +52,9 @@ const store = new Vuex.Store({
 		}
 	},
 	actions:{
+		countinfo({commit},value){
+			commit("COUNTINFO",parseInt(value))
+		},
 		increment({commit}){
 			commit("INCREMENT")
 		},
@@ -55,8 +64,8 @@ const store = new Vuex.Store({
 		addNote({commit}){
 			commit('ADD_NOTE')
 		},
-		editNote({commit},e){
-			commit("EDIT_NOTE",e.target.value)
+		editNote({commit},value){
+			commit("EDIT_NOTE",value)
 		},
 		deleteNote({commit}){
 			commit("DELETE_NOTE")

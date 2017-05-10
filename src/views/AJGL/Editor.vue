@@ -11,7 +11,7 @@
 	export default {
 		data () {
 			return {
-				
+				activeNoteText:'Edit Note'
 			}
 
 		},
@@ -22,7 +22,7 @@
 		},
 		methods:{
 			editNote () {
-				this.$store.dispatch("editNote")
+				this.$store.dispatch("editNote",this.activeNoteText)
 			},
 		}
 	}
