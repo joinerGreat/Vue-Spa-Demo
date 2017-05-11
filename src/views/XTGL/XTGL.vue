@@ -1,12 +1,16 @@
 <template>
 	<div id="XTGLPage" class="XTGLPage">
-		<display></display>
-		<increment></increment>
+		<showBox></showBox>
+		<inputBox></inputBox>
+		<calcBox></calcBox>
+		<outputBox></outputBox>
 	</div>
 </template>
 <script>
-import display from "./chlidComponents/display.vue"
-import increment from "./chlidComponents/increment.vue"
+import showBox from "./chlidComponents/showBox.vue"
+import inputBox from "./chlidComponents/inputBox.vue"
+import calcBox from "./chlidComponents/calc.vue"
+import outputBox from "./chlidComponents/outputBox.vue"
 	export default {
 		name:'',
 		data () {
@@ -15,13 +19,20 @@ import increment from "./chlidComponents/increment.vue"
 			}
 		},
 		components:{
-			display,
-			increment
+			inputBox,
+			showBox,
+			calcBox,
+			outputBox
 		}
 	}
 </script>
 <style scoped>
 	.XTGLPage{
-		margin-top: 200px;
+		width: 500px;
+		height: 400px;
+		padding: 30px 20px 0; 
+		border: 2px solid #ccc;
+		box-shadow: 10 10 0 0 #333;
+		background-color: #ccc;
 	}
 </style>
