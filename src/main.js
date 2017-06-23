@@ -5,6 +5,7 @@ import 'element-ui/lib/theme-default/index.css'
 import router from './router/router.js' 
 import $ from 'jquery'
 import store from "./store/store.js"//引入store对象
+import './static/js/validate.js'
 
 Vue.use(ElementUI)
 
