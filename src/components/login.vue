@@ -85,9 +85,26 @@ import Axios from 'axios'
 				}else{
 					this.formName.beDisabled = true;
 				}
-			}
+			},
+
+			show:function(ev){
+               if(ev.keyCode == 13){
+                    alert('你按回车键了');
+                }
+            },
+
+		},
+		mounted: function(){
+		    this.$nextTick(function(){
+		        $(document).keyup(function(event){  
+					  if(event.keyCode ==13){  
+					   alert('1')
+					  }  
+					});  
+		    })
 		}
 	}
+
 </script>
 <style scoped>
 	html,body{
