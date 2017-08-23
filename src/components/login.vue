@@ -1,7 +1,7 @@
 <template>
 <div class="dialog">
 	<div class="loginPage">
-		<h1>登录{{fromParent}}</h1>
+		<h1><!-- 登录{{fromParent}} --></h1>
 		<el-form>
 			<el-form-item label="user">
 				<el-input type="text" id="user" v-model="formName.user" @blur="inputBlur('user',formName.user)"></el-input>
@@ -33,54 +33,60 @@ import Axios from 'axios'
 				loginShow: false//传值给父组件
 			}			
 		},
+
 		props:[
 				'fromParent'
 		],
+
 		methods: {
-			resetForm:function(){
+			resetForm:function() {
 				this.formName.user = '';
 				this.formName.userError = '';
 				this.formName.password = '';
 				this.formName.passwordError = '';
 			},
-			submitForm:function(formName){
-				var _this = this;
+
+			submitForm:function( formName ) {
+				var _this = this,
+					user,
+					password;
 				//提交user password
 				//与父组件通信传值
-				_this.$emit('showState', [this.loginShow,this.formName.user])
-				var user = this.formName.user,
+				_this.$emit('showState', [ this.loginShow, this.formName.user ]) 
+					user = this.formName.user,
 					password = this.formName.password;
 					//console.log(user,password)
-				Axios.get('../../src/php/login1.php',{
+				Axios.get('../../src/php/login.php',{
 						user: user,
 						password: password
-					}).then(function(res){
+					}).then(function( res ) {
 					 	//console.log(res)
-					 	if (res.data == 'cunzai') {
+					 	if ( res.data === 'cunzai' ) {
 					 		//与父组件通信传值
-							_this.$emit('showState', [this.loginShow,this.formName.user])
+							_this.$emit( 'showState', [ this.loginShow, this.formName.user ] )
 					 	}
 					 })
-					 .catch(function(err){
-					 	console.log(err);
+					 .catch(function( err ) {
+					 	console.log( err );
 					 })
 			},
-			inputBlur:function(errorItem,inputContent){
-				if (errorItem === 'user') {
-					if (inputContent === '') {
+
+			inputBlur:function( errorItem, inputContent ) {
+				if ( errorItem === 'user' ) {
+					if ( inputContent === '' ) {
 						this.formName.userError = '用户名不能为空'
 					}else{
 						this.formName.userError = '';
 					}
-				}else if(errorItem === 'password') {
-					if (inputContent === '') {
+				}else if( errorItem === 'password' ) {
+					if ( inputContent === '' ) {
 						this.formName.passwordError = '密码不能为空'
 					}else{
 						this.formName.passwordError = '';
 					}
 				}
 				//对于按钮的状态进行修改
-				if (this.formName.user != '' && this.formName.password != '') {
+				if ( this.formName.user != '' && this.formName.password != '' ) {
 					this.formName.beDisabled = false;
 				}else{
 					this.formName.beDisabled = true;

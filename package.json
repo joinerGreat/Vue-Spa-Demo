@@ -12,8 +12,11 @@
     "echarts": "^3.5.2",
     "element-ui": "^1.2.5",
     "jquery": "^3.2.1",
+    "vee-validate": "^2.0.0-rc.5",
     "vue": "^2.2.1",
-    "vue-router": "^2.4.0"
+    "vue-router": "^2.4.0",
+    "vue-validator": "^3.0.0-alpha.2",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "axios": "^0.16.1",

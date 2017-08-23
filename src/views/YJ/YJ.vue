@@ -19,7 +19,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-for="item in items">
+					<tr v-for="(item,index) in items">
 						<td>{{item.AJBH}}</td>
 						<td>{{item.AJMC}}</td>
 						<td>{{item.AJLX}}</td>
@@ -31,12 +31,27 @@
 						<td>{{item.JG}}</td>
 						<td>{{item.phone}}</td>
 						<td>
-							<button class="layui-btn" @click="showDetails($event)">详情</button>
+							<button class="layui-btn" @click="showDetails($event,index)">详情</button>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 			<div id="demo4"></div>
+		</div>
+		<div class="dialog" v-if="btnDisplay">
+			<button class="btn" v-if="btnDisplay" @click="changeState">隐藏</button>
+			<hr/>
+			<ul v-for="(todo,index) in todos">
+				<li>{{todo.AJBH}}</li>
+				<li>{{todo.AJMC}}</li>
+				<li>{{todo.AJLX}}</li>
+				<li>{{todo.AJDD}}</li>
+				<li>{{todo.AJSJ}}</li>
+				<li>{{todo.name}}</li>
+				<li>{{todo.age}}</li>
+				<li>{{todo.gender}}</li>
+				<li>{{todo.phone}}</li>
+			</ul>
 		</div>
 	</div>
 </template>
@@ -47,7 +62,9 @@ import Axios from 'axios'
 		data () {
 			return {
 				items:'',
-				html: []
+				html: [],
+				todos: [],
+				btnDisplay: false
 			}
 		},
 		mounted:function(){
@@ -89,7 +106,15 @@ import Axios from 'axios'
 			})
 		},
 		methods:{
-			
+			showDetails:function($event,index){
+				this.btnDisplay = true
+				this.todos = []
+				this.todos.push(this.items[index])
+			},
+			changeState () {
+				this.btnDisplay = false
+				this.todos = []
+			}
 		}
 	}
 </script>
@@ -97,5 +122,19 @@ import Axios from 'axios'
 	.YJPage .table-area{
 		width: 90%;
 		margin: 30px auto;
+	}
+	.dialog{
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		padding-top: 400px;
+		background:rgba(0,0,0,.5);
+	}
+	li{
+		color: #fff;
 	}
 </style>
