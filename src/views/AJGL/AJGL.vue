@@ -1,13 +1,7 @@
 <template>
 	<div id="AJGLPage" class="AJGLPage">
-<<<<<<< HEAD
 		<p>hello AJGLPage</p>
 		<input type="text" name="" @keyup="show($event)">
-=======
-		<toolbar></toolbar>
-		<notes-list></notes-list>
-		<editor></editor>
->>>>>>> a249407bea99a4e9b63acd50d691555d2a27d79e
 	</div>
 </template>
 <script>
@@ -21,7 +15,6 @@ import Editor from "./Editor.vue"
 
 			}
 		},
-<<<<<<< HEAD
 
 		methods: {
 			show: function (ev) {
@@ -29,12 +22,6 @@ import Editor from "./Editor.vue"
 	              alert('你按了回车键！')
 	            }
 	        }
-=======
-		components:{
-			Toolbar,
-			NotesList,
-			Editor
->>>>>>> a249407bea99a4e9b63acd50d691555d2a27d79e
 		}
 	}
 </script>

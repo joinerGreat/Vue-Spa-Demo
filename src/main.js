@@ -6,6 +6,9 @@ import router from './router/router.js'
 import $ from 'jquery'
 import store from "./store/store.js"//引入store对象
 import './static/js/validate.js'
+import path from './static/js/path.js';
+
+global.path = path;
 
 Vue.use(ElementUI)
 

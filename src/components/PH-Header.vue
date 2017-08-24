@@ -2,7 +2,6 @@
 	<div id="ph-header" class="ph-header">
 		<ul class="layui-nav">
 			<li class="layui-nav-item">
-				<img src="../assets/images/logo.jpg" height="69" width="67" alt="">
 			</li>
 			<li class="layui-nav-item ph-title">
 				<a href="">人案智能系统</a>
